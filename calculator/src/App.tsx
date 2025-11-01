@@ -16,6 +16,8 @@ export default function App() {
     isNewNumber: true,
   });
 
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
+
   // 숫자 버튼 클릭 처리 함수
   const handleNumberClick = (
     event: React.MouseEvent<HTMLInputElement, MouseEvent>
@@ -111,27 +113,30 @@ export default function App() {
     }
   }
   return (
-    <article className="calculator">
-      <form name="forms">
-        <input type="text" className="screen" name="output" value={state.currentNumber} readOnly />
-        <input type="button" className="clear" value="C" onClick={handleClear} />
-        <input type="button" className="operator" value="/" onClick={handleOperatorClick} />
-        <input type="button" value="1" onClick={handleNumberClick} />
-        <input type="button" value="2" onClick={handleNumberClick} />
-        <input type="button" value="3" onClick={handleNumberClick} />
-        <input type="button" className="operator" value="*" onClick={handleOperatorClick} />
-        <input type="button" value="4" onClick={handleNumberClick} />
-        <input type="button" value="5" onClick={handleNumberClick} />
-        <input type="button" value="6" onClick={handleNumberClick} />
-        <input type="button" className="operator" value="+" onClick={handleOperatorClick} />
-        <input type="button" value="7" onClick={handleNumberClick} />
-        <input type="button" value="8" onClick={handleNumberClick} />
-        <input type="button" value="9" onClick={handleNumberClick} />
-        <input type="button" className="operator" value="-" onClick={handleOperatorClick} />
-        <input type="button" className="dot" value="." onClick={handleDot} />
-        <input type="button" value="0" onClick={handleNumberClick} />
-        <input type="button" className="result" value="=" onClick={handleOperatorClick}/>
-      </form>
-    </article>
+    <>
+      <button className="mode" onClick={() => setMode(mode === "light" ? "dark" : "light")}>{mode === "light" ? "dark mode" : "light mode"}</button>
+      <article className={`calculator ${mode === "light" ? "light" : "dark"}`}>
+        <form name="forms">
+          <input type="text" className="screen" name="output" value={state.currentNumber} readOnly />
+          <input type="button" className="clear" value="C" onClick={handleClear} />
+          <input type="button" className="operator" value="/" onClick={handleOperatorClick} />
+          <input type="button" value="1" onClick={handleNumberClick} />
+          <input type="button" value="2" onClick={handleNumberClick} />
+          <input type="button" value="3" onClick={handleNumberClick} />
+          <input type="button" className="operator" value="*" onClick={handleOperatorClick} />
+          <input type="button" value="4" onClick={handleNumberClick} />
+          <input type="button" value="5" onClick={handleNumberClick} />
+          <input type="button" value="6" onClick={handleNumberClick} />
+          <input type="button" className="operator" value="+" onClick={handleOperatorClick} />
+          <input type="button" value="7" onClick={handleNumberClick} />
+          <input type="button" value="8" onClick={handleNumberClick} />
+          <input type="button" value="9" onClick={handleNumberClick} />
+          <input type="button" className="operator" value="-" onClick={handleOperatorClick} />
+          <input type="button" className="dot" value="." onClick={handleDot} />
+          <input type="button" value="0" onClick={handleNumberClick} />
+          <input type="button" className="result" value="=" onClick={handleOperatorClick}/>
+        </form>
+      </article>
+    </>
   );
 }
