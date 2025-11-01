@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.calculator{
+    width: 225px;
+    height: 335px;
+    padding: 5px;
+    border: 2px solid black;
+}
+.calculator form {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 50px 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+.calculator form .screen {
+    grid-column: span 4;
+}
+
+.calculator form .clear {
+    grid-column: span 3;
+}
+
+.calculator form .result {
+    grid-column: span 2;
+}
+
+
